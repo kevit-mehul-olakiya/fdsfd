@@ -25,7 +25,8 @@ let userName = (username) => {
                     }
                 ]
             };
-
+            let title = []
+            let comment = [];
             for (let i = 0; i < users.length; i++) {
 
                 if (username === users[i].username) {
@@ -35,25 +36,31 @@ let userName = (username) => {
                     userdata.name = user.name
                     userdata.city = user.address.city
                     userdata.email = user.email
-
-                    // console.log(users[i])
-
                     for (let j = 0; j < posts.length; j++) {
                         if (user.id === posts[j].userId) {
                             let post = posts[j];
-                            let Id = posts[j].userId
-                            console.log(post.title)
+                            let Id = posts[j].id
+
+               userdata.post.push({
+                                  id:post.id,
+                                  title: post.title,
+                                  comments: [{
+                                      name : " ",
+                                      body:" "
+                                  }]
+
+                              })
+
+
 
                             for (let k = 0; k < comments.length; k++) {
                                 if (Id === comments[k].postId) {
-                                    let comment = comments[k];
-                                    // console.log(userdata.post)
-                                    //  console.log(comment)
-                                    const demo1 = [{
-                                        name: comment.name,
-                                        body: comment.body
-                                    }]
-                                    console.log(demo1)
+
+                                userdata.post.push(comments=[{
+                                    postId:comments[k].postId,
+                                    name:comments[k].name,
+                                    body:comments[k].body
+                                }])
 
                                 }
                             }
@@ -62,9 +69,21 @@ let userName = (username) => {
                 }
 
             }
+            // for (let i = 0; i < userdata.post.length; i++) {
+            //     for (let j = 0; j < comment.length; j++) {
+            //       if (userdata.post[i].id===comment[j].postId){
+            //           userdata.post[i].comments.push({
+            //               name:comment[j].name,
+            //               body:comment[j].body
+            //           })
+            //       }
+            //     }
+            //
+            // }
 
             console.log(userdata)
         })
+
         .catch((err) => {
             console.log(err);
         });
