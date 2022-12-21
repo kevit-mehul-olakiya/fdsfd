@@ -16,7 +16,7 @@ let userName = (username) => {
                 post: [
                     {
                         title: "",
-                        comment: [
+                        arrayCmt: [
                             {
                                 name: "",
                                 body: "",
@@ -26,7 +26,7 @@ let userName = (username) => {
                 ]
             };
             let title = []
-            let comment = [];
+
             for (let i = 0; i < users.length; i++) {
 
                 if (username === users[i].username) {
@@ -41,26 +41,19 @@ let userName = (username) => {
                             let post = posts[j];
                             let Id = posts[j].id
 
-               userdata.post.push({
+               title.push({
                                   id:post.id,
                                   title: post.title,
-                                  comments: [{
-                                      name : " ",
-                                      body:" "
-                                  }]
+                                  arrayCmt: []
 
                               })
-
-
-
                             for (let k = 0; k < comments.length; k++) {
                                 if (Id === comments[k].postId) {
-
-                                userdata.post.push(comments=[{
+                                    title[j].arrayCmt.push({
                                     postId:comments[k].postId,
                                     name:comments[k].name,
                                     body:comments[k].body
-                                }])
+                                })
 
                                 }
                             }
@@ -69,19 +62,9 @@ let userName = (username) => {
                 }
 
             }
-            // for (let i = 0; i < userdata.post.length; i++) {
-            //     for (let j = 0; j < comment.length; j++) {
-            //       if (userdata.post[i].id===comment[j].postId){
-            //           userdata.post[i].comments.push({
-            //               name:comment[j].name,
-            //               body:comment[j].body
-            //           })
-            //       }
-            //     }
-            //
-            // }
 
-            console.log(userdata)
+              userdata.post = title
+            console.log(JSON.stringify(userdata,null,2))
         })
 
         .catch((err) => {
