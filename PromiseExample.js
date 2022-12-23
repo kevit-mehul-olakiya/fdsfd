@@ -46,9 +46,9 @@ let End = () =>{
 }
 
    async function Start() {
-        Promise.all([A().then( () => {
-           B()
-       }), D()]).then(async () => {
+        Promise.all([A().then(() => {
+            B()
+        }), D()]).then(async () => {
            await C()
        })
 

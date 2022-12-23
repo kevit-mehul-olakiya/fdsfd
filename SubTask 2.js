@@ -12,11 +12,11 @@ let common = (functionName,time)=>{
 // let  D =  common("D",5000)
 // let  End =  common("End",6000)
 
-Promise.all([common("A",2000).then(()=>{
-    common("B",10000).then((value)=>{
+Promise.all([common("A", 2000).then(() => {
+    common("B", 10000).then((value) => {
         console.log(value)
     })
-}),common("D",3000)])
+}), common("D", 3000)])
     .then((value)=>{
     console.log(value[0])
     console.log(value[1])
